@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "RiragRPCAPI";
+
+package userupdate;
+
+service UserUpdateService{
+	rpc UpdateUser(UpdateUserRequest) returns (UpdateserResponse);
+}
+
+message UpdateUserRequest{
+	string UserId = 1;
+	string Name = 2;
+	string Family = 3;
+	string NationalCode = 4;
+	string DateOfBirth = 5;
+}
+
+message UpdateserResponse{	
+}

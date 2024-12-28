@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "RiragRPCAPI";
+
+package usercreate;
+
+service UserCreateService{
+	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
+
+message CreateUserRequest{
+	string Name = 1;
+	string Family = 2;
+	string NationalCode = 3;
+	string DateOfBirth = 4;
+}
+
+message CreateUserResponse{
+	string UserId = 1;
+}

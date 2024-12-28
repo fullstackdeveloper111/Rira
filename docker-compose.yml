@@ -1,0 +1,42 @@
+services:
+  sqldbbb:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD="$#MkijN1234"
+    ports:
+      - "1445:1433"
+
+  riraapi:
+    image: ${DOCKER_REGISTRY-}riraapi
+    build:
+      context: .
+      dockerfile: RiraAPI/Dockerfile
+    depends_on:
+      - sqldbbb
+    ports:
+      - "5093:5093"
+    networks:
+      - apinetwork
+
+  riraapiclient:
+    image: ${DOCKER_REGISTRY-}riraapiclient
+    build:
+      context: .
+      dockerfile: RiraApiClient/Dockerfile    
+    ports:
+      - "5094:5094"
+    networks:
+      - apinetwork
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - apinetwork
+  
+
+networks:
+  apinetwork:
+    driver: bridge

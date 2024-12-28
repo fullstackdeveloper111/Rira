@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "RiragRPCAPI";
+
+package usergrpservice;
+
+service UserService{
+	rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+}
+
+message GetUsersRequest{
+	string name = 1;
+	string Family = 2;
+	string NationalCode = 3;
+	string FromDateOfBirth = 4;
+	string ToDateOfBirth = 5;
+}
+
+message GetUsersResponse{
+	string name = 1;
+	string Family = 2;
+	string NationalCode = 3;
+	string DateOfBirth = 4;
+}
+

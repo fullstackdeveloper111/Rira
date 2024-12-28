@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "RiragRPCAPI";
+
+package userremove;
+
+service UserRemoveService{
+	rpc RemoveUser(RemoveUserRequest) returns (RemoveserResponse);
+}
+
+message RemoveUserRequest{
+	string UserId = 1;
+}
+
+message RemoveserResponse{	
+}
